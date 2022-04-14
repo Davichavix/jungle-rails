@@ -20,8 +20,8 @@
       <tr>
       <td><%= item.product.name%></td>
       <td><%= item.quantity%></td>
-      <td><%= item.product.price_cents%></td>
-      <td><%= item.total_price_cents%></td>
+      <td><%= humanized_money_with_symbol item.product.price_cents/100%></td>
+      <td><%= humanized_money_with_symbol item.total_price_cents/100%></td>
       </tr>
     <% end %>
     </tbody>
