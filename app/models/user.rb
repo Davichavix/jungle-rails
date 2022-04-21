@@ -7,12 +7,14 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true, length: { minimum: 6 }
 
-  # def create
-  #   if user = User.authenticate_with_credentials(params[:email], params[:password])
-  #     # success logic, log them in
-  #   else
-  #     # failure, render login form
-  #   end
-  # end
+  def self.authenticate_with_credentials(email, password)
+    user = User.find_by_email(email)
+    if user && user.authenticate(password)
+      return user
+    else
+      return nil
+    end
+  end
+
   
 end
